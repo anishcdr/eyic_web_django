@@ -1,0 +1,295 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ISMEF</title>
+  <link rel="icon" href="project\images\logo.png" type="image/x-icon">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+  <style>
+    #logo {
+      width: 40%;
+      height: 40%;
+    }
+
+    #title {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: red;
+      gap: 5px;
+      font-size: 200px;
+      font-weight: 900;
+      font-family: 'Poppins';
+    }
+
+    .container-fluid {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 90vh;
+      background-color: #141B41;
+      /* Ensure the container takes the full height of the viewport */
+    }
+
+    navbar {
+      background-color: #0C0910;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: 'Poppins';
+      color-scheme: unset;
+      color: whitesmoke;
+      overflow-x: hidden;
+      height: 10vh;
+    }
+
+    #nav-title {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: red;
+      gap: 5px;
+      color: white;
+      font-size: 20px;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+    }
+
+    .npk {
+      background-color: #233D4D;
+      width: 100%;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 50px;
+      color: #FCCA46;
+      overflow: hidden;
+    }
+
+    .moisture {
+      background-color: #320E3B;
+      width: 100%;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 50px;
+      color: #93B3EA;
+      overflow: hidden;
+    }
+
+    #navbarNavDropdown {
+      position: relative;
+      left: 75%;
+    }
+  </style>
+</head>
+
+<body>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+    crossorigin="anonymous"></script>
+
+  <navbar class="navbar navbar-expand-lg">
+    <a class="navbar-brand" href="#" id="nav-title"><img src="{% static 'images/logo.png' %}" alt="Logo" width="30"
+        height="24" class="d-inline-block align-text-top"><strong>ISMEF</strong></a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
+      aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="#"
+            style="color:white;font-family:'Poppins';font-weight:bold">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="#NPK"
+            style="color:white;font-family:'Poppins';font-weight:bold">NPK</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" href="#wet" style="color:white;font-family:'Poppins';font-weight:bold">Moisture</a>
+        </li>
+      </ul>
+    </div>
+  </navbar>
+
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#" id="title">
+      <img src="{% static 'images/logo.png' %}" alt="Logo" width="30" height="24" class="d-inline-block align-text-top"
+        id="logo">
+      ISMEF<span style="font-size: 15px;color: green;font-weight: bolder;text-align: justify;"><br><br><br><br>(<span
+          style="color: #CA054D;">I</span>ntegrated<br><span style="color: #CA054D;">S</span>oil<br><span
+          style="color: #CA054D;">M</span>onitoring For<br><span style="color: #CA054D;">E</span>nhanced<br><span
+          style="color: #CA054D;">F</span>arming)</span>
+    </a>
+  </div>
+
+  <div class="npk" id="NPK">
+    <img src="{%static 'images\npk.png'%}" alt="NPK">
+    <span>
+      <h2 style="color:#FE7F2D;text-align: center;">NPK (Nitrogen, Phosphorus and Pottasium)</h2>
+      NPK values refer to the three essential nutrients found in fertilizers: Nitrogen (N), Phosphorus (P), and
+      Potassium (K). These values are commonly displayed on fertilizer packaging as a series of three numbers, such as
+      10-20-10, indicating the percentage of each nutrient in the fertilizer.
+      <br><span style="color:#A1C181;font-weight:900;">1. Nitrogen (N):</span> Promotes leaf and stem growth. It is
+      vital for the formation of proteins, enzymes, and chlorophyll, contributing to lush, green foliage.
+      <br><span style="color:#A1C181;font-weight: 900;">2. Phosphorus (P):</span> Supports root development, flowering,
+      and fruiting. Phosphorus is crucial for energy transfer and storage in plants, aiding in the formation of DNA,
+      RNA, and other essential molecules.
+      <br><span style="color:#A1C181;font-weight:900;">3.Pottasium (K):</span> Enhances overall plant health and
+      resilience. It plays a role in various physiological processes, such as water uptake, enzyme activation, and
+      disease resistance.
+      <br>
+      <a href="#" style="text-decoration:none;;"><span style="color: #197278;font-weight: bolder;">Go back up
+          ^</span></a>
+      <div class="row g-3 align-items-center">
+        <div class="col-auto">
+          <label for="n-p-k" class="col-form-label" style="color: #C2E812;font-weight: bold;">Nitrogen, Phosphorus,
+            Pottasium:</label>
+        </div>
+        <div class="col-auto">
+          <input type="text" id="n-p-k" class="form-control" data-bs-theme="dark"
+            style="color: white;border: 5px #DADFF7;background-color: #233D4D;">
+        </div>
+        <div class="col-auto">
+          <span id="npk" class="form-text" style="color: aqua;">
+            mg/kg
+          </span>
+        </div>
+      </div>
+    </span>
+  </div>
+  <div class="moisture" id="wet">
+    <img src="{%static 'images\wt-farm.png' %}" alt="moisture">
+    <span>
+      <h2 style="color:#B27DCC;text-align: center;">Moisture</h2>
+      Moisture in soil is a critical factor that significantly influences plant growth and agricultural productivity.
+      Soil moisture refers to the amount of water present in the soil, and its availability directly affects the health
+      and development of crops.
+      <br>
+      <span style="color:#7F96FF">Here are the readings,</span>
+      <div class="row g-3 align-items-center">
+        <div class="col-auto">
+          <label for="wetness" class="col-form-label" style="color: #C2E812;font-weight: bold;">Moisture:</label>
+        </div>
+        <div class="col-auto">
+          <input type="text" id="wetness" class="form-control" data-bs-theme="dark"
+            style="color: white; border: 10px bisque;background-color: #320E3B;" disabled>
+        </div>
+        <div class="col-auto">
+          <span id="moist" class="form-text" style="color: aqua;">
+            wfv
+          </span>
+        </div>
+      </div>
+    </span>
+  </div>
+  <script>
+    // Function to update the text box with the received data
+    function update() {
+      grid_section = "{{data.grid_section}}";
+      nitrogen = "{{data.nitrogen}}";
+      phosphorus = "{{data.phosphorus}}";
+      potassium = "{{data.potassium}}";
+      moisture_level = "{{data.moisture_level}}";       
+    }
+
+
+    function updateNPK() {
+      update();
+      var latestDataSpan = document.getElementById("n-p-k");
+      latestDataSpan.textContent = `${grid_section}: N: ${nitrogen}, P: ${phosphorus}, K: ${potassium},`;
+    }
+
+
+    setInterval(updateNPK, 5000);
+    updateNPK();
+  </script>
+
+
+
+  <!--<script>
+    function updateSensorValues(data) {
+      var textBox = document.getElementById("n-p-k");
+
+      // Set the value of the text box
+      textBox.value = data;
+    }
+
+    async function fetchDataFromFile() {
+      try {
+        // Read the last line from a text file (data.txt)
+        const response = await fetch('data.txt');
+        const text = await response.text();
+
+        // Extract the latest line
+        const lines = text.split('\n');
+        const latestLine = lines[lines.length - 2];  // The last line might be empty, so we take the second-to-last line
+
+        // Assuming the data is in the format "N: value, P: value, K: value"
+        const values = latestLine.match(/\b(?:N|P|K): \d+\b/g);
+
+        if (values && values.length === 3) {
+          const [nitrogenValue, phosphorusValue, potassiumValue] = values.map(val => val.split(': ')[1]);
+          updateSensorValues(`N: ${nitrogenValue}, P: ${phosphorusValue}, K: ${potassiumValue}`);
+        } else {
+          updateSensorValues('Invalid data format in file');
+        }
+      } catch (error) {
+        console.error('Error reading data from file:', error);
+        console.error('Error reading data from file');
+      }
+    }
+
+    // Fetch data every 5 seconds
+    setInterval(fetchDataFromFile, 5000);
+
+    // Initial fetch
+    fetchDataFromFile();
+
+    function updateSensorValues1(data) {
+      var textBox = document.getElementById("wetness");
+
+      // Set the value of the text box
+      textBox.value = data;
+    }
+
+    async function fetchDataFromFile1() {
+      try {
+        // Read the last line from a text file (data.txt)
+        const response = await fetch('data1.txt');
+        const text = await response.text();
+
+        // Extract the latest line
+        const lines = text.split('\n');
+        const latestLine = lines[lines.length - 2];  // The last line might be empty, so we take the second-to-last line
+        if (latestLine !== undefined)
+          updateSensorValues1(latestLine);
+        
+      } catch (error) {
+        console.error('Error reading data from file:', error);
+        console.error('Error reading data from file');
+      }
+    }
+
+    // Fetch data every 5 seconds
+    setInterval(fetchDataFromFile1, 5000);
+
+    // Initial fetch
+    fetchDataFromFile1();
+  </script>-->
+
+</body>
+
+</html>
