@@ -8,18 +8,31 @@ from .serializers import SoilDataSerializer
 import json
 from traceback import print_exc
 from django.db.models import Max
+import csv
 
 def current_value(request):
-    # Get the latest data across all grid_sections
-    data = SoilData.objects.values('grid_section').annotate(latest_timestamp=Max('timestamp')).order_by('-latest_timestamp').first()
+    csv_filename = 'soil_data.csv'
+    data = []
 
-    if data:
-        # Retrieve the data for the grid_section with the latest timestamp
-        data_instance = SoilData.objects.get(grid_section=data['grid_section'], timestamp=data['latest_timestamp'])
-        return render(request, 'welcome.html', {'data': data_instance})
-    else:
-        # No data available
-        return render(request, 'welcome.html', {'data': None})
+    try:
+        with open(csv_filename, 'r') as csvfile:
+            csv_reader = csv.DictReader(csvfile)
+            for row in csv_reader:
+                data.append(row)
+    except FileNotFoundError:
+        data = None
+
+    return render(request, 'welcome.html', {'data': data})
+
+
+
+
+
+'''def current_value(request):
+    # Get the latest data across all grid_sections
+    data = SoilData.objects.all().order_by('-id').first()
+    
+    return render(request,'welcome.html',{'data':data})'''
 
 
 
@@ -27,13 +40,18 @@ def current_value(request):
 # myapp/views.py
 
 def welcome(request):
-    return render(request, 'welcome.html')
+    data = SoilData.objects.all().order_by('-id').first()
+    return render(request, 'welcome.html',{'data':data})
 
 from .models import SoilData
 
-def grid_section_detail(request, grid_section):
-    data = SoilData.objects
+def grid_section_detail(request):
+    data = SoilData.objects.all()
     return render(request, 'npk.html', {'data': data})
+
+def moisture(request):
+    data = SoilData.objects.all()
+    return render(request, 'water.html', {'data': data})
 
 '''def current_value(request, grid_section):
     data = SoilData.objects
@@ -76,9 +94,19 @@ class ReceiveDataFromRoverAPIView(APIView):
         serializer = SoilDataSerializer(data=request.data)
 
         if serializer.is_valid():
+            csv_filename = 'soil_data.csv'
+            with open(csv_filename, 'a', newline='') as csvfile:
+                csv_writer = csv.writer(csvfile)
+                # Write a header if the file is empty
+                if csvfile.tell() == 0:
+                    csv_writer.writerow(serializer.validated_data.keys())
+                csv_writer.writerow(serializer.validated_data.values())
             # Save the data to the database
             soil_data = SoilData.objects.create(**serializer.validated_data)
+           
+
             return JsonResponse({'message': 'Data received and stored successfully'})
+            
            
         else:
             print_exc

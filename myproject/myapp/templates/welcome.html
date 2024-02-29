@@ -20,7 +20,7 @@
       align-items: center;
       justify-content: center;
       text-align: center;
-      color: red;
+      color: rgb(1, 53, 1);
       gap: 5px;
       font-size: 200px;
       font-weight: 900;
@@ -124,7 +124,7 @@
     </div>
   </navbar>
 
-  <div class="container-fluid">
+  <div class="container-fluid" style="background-image: url('{%static 'images/back.jpg' %}');background-repeat:no-repeat;background-size:cover;">
     <a class="navbar-brand" href="#" id="title">
       <img src="{% static 'images/logo.png' %}" alt="Logo" width="30" height="24" class="d-inline-block align-text-top"
         id="logo">
@@ -151,8 +151,7 @@
       resilience. It plays a role in various physiological processes, such as water uptake, enzyme activation, and
       disease resistance.
       <br>
-      <a href="#" style="text-decoration:none;;"><span style="color: #197278;font-weight: bolder;">Go back up
-          ^</span></a>
+      
       <div class="row g-3 align-items-center">
         <div class="col-auto">
           <label for="n-p-k" class="col-form-label" style="color: #C2E812;font-weight: bold;">Nitrogen, Phosphorus,
@@ -160,13 +159,16 @@
         </div>
         <div class="col-auto">
           <input type="text" id="n-p-k" class="form-control" data-bs-theme="dark"
-            style="color: white;border: 5px #DADFF7;background-color: #233D4D;">
+            style="color: #390099;border: 1px bisque;background-color: #8ACDEA;width: 300px;font-weight:bold;border-right: 0;">
         </div>
         <div class="col-auto">
           <span id="npk" class="form-text" style="color: aqua;">
             mg/kg
           </span>
         </div>
+        <div class="col-auto"><a href="{%url 'npk'%}"><button type="button" class="btn btn-outline-success" style="font-weight: bold;color: #7EE8FA;">Comprehensive report</button></a></div>
+        <a href="#" style="text-decoration:none;"><span style="color: #197278;font-weight: bolder;">Go back up
+          ^</span></a>
       </div>
     </span>
   </div>
@@ -185,31 +187,45 @@
         </div>
         <div class="col-auto">
           <input type="text" id="wetness" class="form-control" data-bs-theme="dark"
-            style="color: white; border: 10px bisque;background-color: #320E3B;" disabled>
+            style="color: #390099; border: 10px bisque;background-color: #FFBD00;font-weight: bold;width: 400px;text-align: center;">
         </div>
         <div class="col-auto">
           <span id="moist" class="form-text" style="color: aqua;">
             wfv
           </span>
         </div>
+        <div class="col-auto"><a href="{%url 'water'%}"><button type="button" class="btn btn-outline-warning" style="font-weight: bold;">Comprehensive report</button></a></div>
+        <a href="#" style="text-decoration:none;"><span style="color: #80FF72;font-weight: bolder;">Go back up
+          ^</span></a>
       </div>
     </span>
   </div>
   <script>
     // Function to update the text box with the received data
+    var grid_section = "{{data.grid_section}}";
+    var nitrogen="{{data.nitrogen}}"
+    var phosphorus="{{data.phosphorus}}"
+    var potassium="{{data.potassium}}"
+    var moisture_level="{{data.moisture_level}}"
     function update() {
+      "{%if data%}"
       grid_section = "{{data.grid_section}}";
-      nitrogen = "{{data.nitrogen}}";
-      phosphorus = "{{data.phosphorus}}";
-      potassium = "{{data.potassium}}";
-      moisture_level = "{{data.moisture_level}}";       
+      nitrogen="{{data.nitrogen}}"
+      phosphorus="{{data.phosphorus}}"
+      potassium="{{data.potassium}}"
+      moisture_level="{{data.moisture_level}}"
+      "{%endif%}"
     }
 
 
     function updateNPK() {
       update();
-      var latestDataSpan = document.getElementById("n-p-k");
-      latestDataSpan.textContent = `${grid_section}: N: ${nitrogen}, P: ${phosphorus}, K: ${potassium},`;
+      "{%if data%}"
+      var data = document.getElementById("n-p-k");
+      data.value = `Grid:${grid_section}--> N: ${nitrogen}, P: ${phosphorus}, K: ${potassium}`;
+      var data1=document.getElementById("wetness")
+      data1.value=`Grid:${grid_section}-->Moisture:${moisture_level}`;
+      "{%endif%}"
     }
 
 

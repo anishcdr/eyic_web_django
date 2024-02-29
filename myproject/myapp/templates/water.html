@@ -93,24 +93,20 @@
       position: relative;
       left: 75%;
     }
-
-    body {
-      background-color: burlywood;
-      color: white;
+    body{
+        background-color: blue;
+        color:white;
     }
-
-    table {
-      font-size: 15px;
-      background: transparent;
+    table{
+        font-size: 15px;
+        background: transparent;
     }
-
-    thead {
+    thead{
       font-weight: bold;
       text-align: center;
     }
-
-    td {
-      width: 40%;
+    td{
+      width:40%;
       text-align: center;
     }
   </style>
@@ -131,49 +127,23 @@
     <div class="collapse navbar-collapse" id="navbarNavDropdown">
       <ul class="navbar-nav">
         <li class="nav-item">
-          <a class="nav-link active" href="{%url 'welcome'%}"
-            style="color:white;font-family:'Poppins';font-weight:bold">Home</a>
+          <a class="nav-link active" href="{%url 'welcome'%}" style="color:white;font-family:'Poppins';font-weight:bold">Home</a>
         </li>
       </ul>
     </div>
   </navbar>
   <div class="container" style="align-items: center;">
     <table class="table" style="background: transparent;border: 10px black;">
-      <thead>
-        <th>Grid Section</th>
-        <th>Nitrogen</th>
-        <th>Phosphorus</th>
-        <th>Potassium</th>
-      </thead>
-      {%for entry in data%}
-      <tr>
-        <td>{{entry.grid_section}}</td>
-        <td>{{entry.nitrogen}}</td>
-        <td>{{entry.phosphorus}}</td>
-        <td>{{entry.potassium}}</td>
-        <!--<td id="optimum"></td>-->
-      </tr>
-      {%endfor%}
-    </table>
+        <thead>
+            <th>Grid Section</th>
+            <th>Moisture Level</th>
+        </thead>
+        {%for entry in data%}
+        <tr>
+          <td>{{entry.grid_section}}</td>
+          <td>{{entry.moisture_level}}</td>
+        </tr>
+        {%endfor%}
+      </table>
   </div>
-<script>
- /* var data=document.getElementById("optimum");
-  "{%for entry in data%}"
-    var data1="{{entry.nitrogen}}"
-    var data2="{{entry.phosphorus}}"
-    var data3="{{data.potassium}}"
-    if(20<=data1<=200){
-      if(30<=data2<=100){
-        if(100<=data3<=200)
-          data.innerHTML="Optimum soil condition nutrient wise"
-        else if(data3<=100)
-          data.innerHTML="Use potassium fertilizers such as potassium chloride and potassium sulphate";
-        else
-          data.innerHTML="Leaching can be useful to reduce"
-      }
-    }
-    "{%endfor%}"*/
-    
-</script>
-</body>
-</html>
+  
